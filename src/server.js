@@ -4,9 +4,9 @@ const app = express();
 require('dotenv').config()
 
 //import apiRouter from './Routes/apiRouter';
-import buUserRouter from './Routes/Bu'
-import eventRouter from './Routes/Event'
-import seanceRouter from './Routes/Seance'
+const buUserRouter = require('./Routes/Bu')
+const eventRouter = require('./Routes/Event')
+const seanceRouter = require('./Routes/Seance')
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies

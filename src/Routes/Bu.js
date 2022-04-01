@@ -1,5 +1,5 @@
-import express from 'express'
-import soap from 'soap'
+const express = require('express');
+const soap = require('soap');
 require('dotenv').config()
 
 const buUserRouter = express.Router()
@@ -116,4 +116,4 @@ buUserRouter.route('/tokenlink/:buUserId/:link')
 			});
 		});  
 		})
-export default buUserRouter;
+module.exports = buUserRouter;

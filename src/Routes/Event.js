@@ -1,7 +1,7 @@
-import express from 'express'
-import soap from 'soap'
 require('dotenv').config()
 
+const express = require('express');
+const soap = require('soap');
 const eventRouter = express.Router()
 const url = process.env.WSDL_URL || ''
 
@@ -95,4 +95,4 @@ eventRouter.route('/ranges/:codicerecita')
     });
         
     })
-export default eventRouter;
+module.exports = eventRouter;

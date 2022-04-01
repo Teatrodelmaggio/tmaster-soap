@@ -1,7 +1,7 @@
-import express from 'express'
-import soap from 'soap'
-import JSON5 from 'json5'
-require('dotenv').config()
+const express = require('express');
+const soap = require('soap');
+const JSON5 = require('json5');
+require('dotenv').config();
 
 
 const seanceRouter = express.Router()
@@ -30,4 +30,4 @@ seanceRouter.route('/room/:codicesala')
     });
         
     })
-export default seanceRouter;
+module.exports = seanceRouter;
