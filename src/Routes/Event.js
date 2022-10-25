@@ -53,24 +53,33 @@ eventRouter.route('/list/:codiceevento')
 eventRouter.route('/seats/:codicerecita')
     .all((req, res) => {
       var codicerecita = req.params.codicerecita;
-    var args = {req:
-      {
-        utente: process.env.SOAP_SERVER,
-        password: process.env.SOAP_PASS,
-        cassa: process.env.SOAP_CASSA,
-        idEvento: codicerecita
-      }
-    };
-    soap.createClient(url, function(err, client) {
-      client.caricaDisponibilitaEvento(args, function(err, result) {
-        res.json(result);     
+      var args = {req:
+        {
+          utente: process.env.SOAP_SERVER,
+          password: process.env.SOAP_PASS,
+          cassa: process.env.SOAP_CASSA,
+          idEvento: codicerecita
+        }
+      };
+      try {
+        soap.createClient(url,{wsdl_options: {timeout: 500}}, function(err, client) {
+        console.log(err);
+        if(client) {
+          client.caricaDisponibilitaEvento(args, function(err, result) {
+          res.json(result);
+          });
+        } else {
+          res.json({});
+        }
+        //client.stampaTitoli(args, function(err, result) {
+          //let description = client.describe()
+          //res.send(description);
+        //});
         });
-      //client.stampaTitoli(args, function(err, result) {
-        //let description = client.describe()
-        //res.send(description);
-      //});
-    });
-        
+      } catch (err) {
+          console.log(err);
+          res.json({})
+      }
     })
 
 eventRouter.route('/ranges/:codicerecita')
