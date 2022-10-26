@@ -62,7 +62,7 @@ eventRouter.route('/seats/:codicerecita')
         }
       };
       try {
-        soap.createClient(url,{wsdl_options: {timeout: 500}}, function(err, client) {
+        soap.createClient(url,{wsdl_options: {timeout: 1000}}, function(err, client) {
         console.log(err);
         if(client) {
           client.caricaDisponibilitaEvento(args, function(err, result) {
