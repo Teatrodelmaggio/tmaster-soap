@@ -80,7 +80,7 @@ buUserRouter.route('/update')
 						nome : req.body.nome
 					},
 					sistemaOrigine: process.env.SOAP_ORIGIN,
-					idSistemaOrigine: ''
+					idSistemaOrigine: req.body.idSistemaOrigine
 				}
 			}
 		};
