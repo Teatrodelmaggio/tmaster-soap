@@ -34,7 +34,6 @@ buUserRouter.route('/register')
 						nome : req.body.nome
 					},
 					sistemaOrigine: process.env.SOAP_ORIGIN,
-					idSistemaOrigine: ''
 				}
 			}
 		};
